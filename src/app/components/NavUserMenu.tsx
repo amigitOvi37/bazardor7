@@ -86,7 +86,7 @@ const NavUserMenu = () => {
             {/* Menu Options */}
             <div className="pt-3 space-y-1">
               <Link
-                href="/profile"
+                href="/Profile"
                 onClick={() => setIsDropdownOpen(false)}
                 className="flex items-center gap-3 w-full px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-xl transition-colors"
               >
