@@ -4,7 +4,7 @@ export const config = {
   matcher: ["/Profile/:path*"],
 };
 
-export default async function middleware(req) {
+export default async function middleware(req: Request) {
   const cookie = req.headers.get("cookie") || "";
   
   // Check if the user has a valid session cookie
