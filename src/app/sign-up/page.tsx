@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import { authClient } from "../lib/auth-client";
 import { redirect } from "next/navigation";
+import { authClient } from "../lib/auth-client";
 
 const SignUpPage = () => {
   const onSubmit = async (e: React.SubmitEvent<HTMLElement>) => {
@@ -12,6 +12,7 @@ const SignUpPage = () => {
     const user = Object.fromEntries(formData.entries()) as {
       name: string;
       email: string;
+      image: string;
       password: string;
     };
 
@@ -30,10 +31,15 @@ const SignUpPage = () => {
     }
   };
 
-  const handleSocialSignIn = async (provider: "google" | "github") => {
+  const handleGoogleSignIn = async () => {
     await authClient.signIn.social({
-      provider,
-      callbackURL: "/",
+      provider: "google",
+    });
+  };
+
+  const handleGithubSignIn = async () => {
+    await authClient.signIn.social({
+      provider: "github",
     });
   };
 
@@ -124,7 +130,7 @@ const SignUpPage = () => {
           <div className="grid grid-cols-2 gap-3">
             {/* Google Login */}
             <button
-              onClick={() => handleSocialSignIn("google")}
+              onClick={() => handleGoogleSignIn()}
               type="button"
               className="flex items-center justify-center px-4 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition duration-150 text-sm font-medium text-gray-700 bg-white shadow-xs"
             >
@@ -151,7 +157,7 @@ const SignUpPage = () => {
 
             {/* GitHub Login */}
             <button
-              onClick={() => handleSocialSignIn("github")}
+              onClick={() => handleGithubSignIn()}
               type="button"
               className="flex items-center justify-center px-4 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition duration-150 text-sm font-medium text-gray-700 bg-white shadow-xs"
             >

@@ -16,7 +16,7 @@ const AllItems = async () => {
   const data = (await res.json()) as itemCardData[];
 
   return (
-    <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 max-w-7xl">
+    <section id="products-section" className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 max-w-7xl">
       {/* Header */}
       <div>
         <h2 className="font-bold text-xl text-gray-900">সব পণ্য</h2>

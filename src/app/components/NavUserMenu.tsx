@@ -31,7 +31,7 @@ const NavUserMenu = () => {
   if (isSessionLoading) {
     return (
       <div className="flex items-center">
-        Loading
+        <ThreeDot color="#32cd32" size="small" text="" textColor="" />
       </div>
     );
   }

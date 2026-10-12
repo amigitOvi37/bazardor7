@@ -21,7 +21,9 @@ const Hero = () => {
                 চাল, ডাল, তেল, সবজি, মাছ, মুরগি, ডিম ও ফলের দাম — বাজারভিত্তিক
                 বিস্তারিত, গড়, সর্বনিম্ন-সর্বোচ্চ এবং দামের পরিবর্তন সহ জানুন।
               </p>
-              <button className="mt-6 bg-green-600 hover:bg-green-700 text-white text-sm font-medium px-5 py-2.5 rounded-lg transition-colors">
+              <button className="mt-6 bg-green-600 hover:bg-green-700 text-white text-sm font-medium px-5 py-2.5 rounded-lg transition-colors"
+                onClick={() => document.getElementById('products-section')?.scrollIntoView({ behavior: 'smooth' })}
+              >
                 সব দর দেখুন
               </button>
             </div>

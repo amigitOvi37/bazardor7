@@ -1,5 +1,11 @@
 import React from "react";
 import NavUserMenu from "@/app/components/NavUserMenu";
+import { Suspense } from "react";
+import NavMarquee from "./NavMarquee";
+import NavLinksDisp from "./NavLinksDisp";
+import { ThreeDot } from "react-loading-indicators";
+
+
 
 const Navbar = () => {
   return (
@@ -48,13 +54,16 @@ const Navbar = () => {
       </header>
 
       <div className="bg-white border-b border-gray-200">
-        <div className="container mx-auto">
-          Loading
-        </div>
-      </div>
-
-      <div className="bg-white border-b border-gray-200">
-        <div>Loading</div>
+        <Suspense
+          fallback={
+            <div className="flex justify-center py-2">
+              <ThreeDot color="#32cd32" size="small" text="" textColor="" />
+            </div>
+          }
+        >
+          <NavLinksDisp />
+          <NavMarquee />
+        </Suspense>
       </div>
     </div>
   );

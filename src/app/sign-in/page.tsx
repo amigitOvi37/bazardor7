@@ -1,43 +1,45 @@
 "use client";
-
-import React from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { authClient } from "../lib/auth-client";
-import { useCategoryContext } from "../context/Context";
 import toast from "react-hot-toast";
+import { authClient } from "../lib/auth-client";
+import Link from "next/link";
 
 const SignInPage = () => {
-  const router = useRouter();
-  const { refreshSession } = useCategoryContext();
-
-  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.SubmitEvent<HTMLElement>) => {
     e.preventDefault();
 
-    const formData = new FormData(e.currentTarget);
+    const formData = new FormData(e.target);
     const user = Object.fromEntries(formData.entries()) as {
       email: string;
       password: string;
     };
 
-    const { data, error } = await authClient.signIn.email(user);
+    console.log(user);
+
+    const { data, error } = await authClient.signIn.email({
+      ...user,
+      callbackURL: "/",
+    });
 
     if (data) {
-      await refreshSession();
-      toast.success("Sign In successful!");
-      router.push("/");
+      toast.success("Sign In successfull!");
+      console.log(data);
     }
 
     if (error) {
-      toast.error("Something went wrong!");
+      toast.error("Something went error!");
       console.log(error);
     }
   };
 
-  const handleSocialSignIn = async (provider: "google" | "github") => {
+  const handleGoogleSignIn = async () => {
     await authClient.signIn.social({
-      provider,
-      callbackURL: "/",
+      provider: "google",
+    });
+  };
+
+  const handleGithubSignIn = async () => {
+    await authClient.signIn.social({
+      provider: "github",
     });
   };
 
@@ -105,7 +107,7 @@ const SignInPage = () => {
           <div className="grid grid-cols-2 gap-3">
             <button
               type="button"
-              onClick={() => handleSocialSignIn("google")}
+              onClick={() => handleGoogleSignIn()}
               className="flex items-center justify-center gap-2 py-2.5 px-4 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors text-xs font-medium text-gray-700"
             >
               <svg className="w-4 h-4" viewBox="0 0 24 24">
@@ -131,7 +133,7 @@ const SignInPage = () => {
 
             <button
               type="button"
-              onClick={() => handleSocialSignIn("github")}
+              onClick={() => handleGithubSignIn()}
               className="flex items-center justify-center gap-2 py-2.5 px-4 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors text-xs font-medium text-gray-700"
             >
               <svg className="w-4 h-4 mr-2 fill-current" viewBox="0 0 24 24">
