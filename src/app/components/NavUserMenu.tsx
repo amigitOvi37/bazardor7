@@ -2,6 +2,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { ThreeDot } from "react-loading-indicators";
 import { useCategoryContext } from "@/app/context/Context";
 
 const NavUserMenu = () => {
@@ -29,10 +30,9 @@ const NavUserMenu = () => {
   // Session still being restored from the cookie: avoid flashing logged-out UI
   if (isSessionLoading) {
     return (
-      <div
-        className="h-9 w-28 animate-pulse rounded-lg bg-gray-100"
-        aria-hidden="true"
-      />
+      <div className="flex items-center">
+        Loading
+      </div>
     );
   }
 

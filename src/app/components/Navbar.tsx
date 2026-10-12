@@ -1,8 +1,4 @@
 import React from "react";
-import { Suspense } from "react";
-import NavLinksDisp from "./NavLinksDisp";
-import NavMarquee from "./NavMarquee";
-import NavUserMenu from "./NavUserMenu";
 
 const Navbar = () => {
   return (
@@ -52,28 +48,12 @@ const Navbar = () => {
 
       <div className="bg-white border-b border-gray-200">
         <div className="container mx-auto">
-          <Suspense
-            fallback={
-              <div className="flex items-center justify-center w-full h-10 animate-pulse">
-                Loading...
-              </div>
-            }
-          >
-            <NavLinksDisp />
-          </Suspense>
+          Loading
         </div>
       </div>
 
       <div className="bg-white border-b border-gray-200">
-        <Suspense
-          fallback={
-            <div className="flex items-center justify-center w-full h-10 animate-pulse">
-              Loading...
-            </div>
-          }
-        >
-          <NavMarquee />
-        </Suspense>
+        <div>Loading</div>
       </div>
     </div>
   );

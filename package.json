@@ -18,7 +18,8 @@
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "react-fast-marquee": "^1.6.5",
-    "react-hot-toast": "^2.6.1"
+    "react-hot-toast": "^2.6.1",
+    "react-loading-indicators": "^1.0.1"
   },
   "devDependencies": {
     "@tailwindcss/turbopack": "^4",

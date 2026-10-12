@@ -1,28 +1,43 @@
 "use client";
+
 import React from "react";
 import Image from "next/image";
 import { authClient } from "@/app/lib/auth-client";
+import { useRouter } from "next/navigation";
 
 const ProfilePage = () => {
   const { data: session, isPending } = authClient.useSession();
+  const router = useRouter();
 
   if (isPending) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p>Loading...</p>
+        <div className="flex items-center justify-center">
+          <ThreeDot color="#32cd32" size="medium" text="" textColor="" />
+        </div>
       </div>
     );
   }
 
   const user = session?.user;
 
-  if (!user) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p>Please sign in first.</p>
-      </div>
-    );
-  }
+  React.useEffect(() => {
+    if (!user) {
+      router.push("/sign-in");
+    }
+  }, [user, router]);
+
+  const [name, setName] = React.useState(user ? user.name || "" : "");
+
+  const handleSignOut = async () => {
+    await authClient.signOut();
+    router.push("/");
+  };
+
+  const handleUpdate = async () => {
+    await authClient.updateUser({ name });
+    setName(user.name || "");
+  };
 
   return (
     <div className="min-h-screen bg-[#f3f4f6] p-6 md:p-10 font-sans">
@@ -67,7 +82,7 @@ const ProfilePage = () => {
             </div>
           </div>
 
-          <button className="flex items-center gap-2 border border-red-500 text-red-500 hover:bg-red-50 px-4 py-2 rounded-xl text-sm font-medium transition-colors w-full sm:w-auto justify-center">
+          <button onClick={handleSignOut} className="flex items-center gap-2 border border-red-500 text-red-500 hover:bg-red-50 px-4 py-2 rounded-xl text-sm font-medium transition-colors w-full sm:w-auto justify-center">
             <span>সাইন আউট</span>
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
@@ -86,10 +101,11 @@ const ProfilePage = () => {
             <input
               type="text"
               className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-gray-50/50"
-              defaultValue={user.name || ""}
+              defaultValue={name}
+              onChange={(e) => setName(e.target.value)}
             />
 
-            <button className="w-full bg-[#00873e] hover:bg-[#007233] text-white font-medium py-3.5 px-4 rounded-xl shadow-sm transition-colors text-center">
+            <button onClick={handleUpdate} className="w-full bg-[#00873e] hover:bg-[#007233] text-white font-medium py-3.5 px-4 rounded-xl shadow-sm transition-colors text-center">
               আপডেট
             </button>
           </div>
