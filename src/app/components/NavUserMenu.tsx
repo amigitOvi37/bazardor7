@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
-import Image from "next/image";
+import { IoPersonCircleOutline } from "react-icons/io5";
 import Link from "next/link";
 import { ThreeDot } from "react-loading-indicators";
 import { useCategoryContext } from "@/app/context/Context";
@@ -39,26 +39,18 @@ const NavUserMenu = () => {
   if (isLoggedIn && user) {
     return (
       <div className="relative" ref={dropdownRef}>
-        <button
+<button
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
           className="flex items-center gap-2 cursor-pointer focus:outline-none py-1 px-2 rounded-lg hover:bg-gray-50 transition-colors"
           aria-expanded={isDropdownOpen}
           aria-label="Account menu"
         >
-          <Image
-            src={user.image || "/avatar.png"}
-            alt={user.name}
-            width={32}
-            height={32}
-            className="h-8 w-8 rounded-full object-cover"
-          />
+          <IoPersonCircleOutline className="h-8 w-8 rounded-full text-gray-400" />
           <span className="text-sm font-medium text-gray-700">
             {user.name}
           </span>
           <svg
-            className={`h-4 w-4 text-gray-400 transition-transform duration-200 ${
-              isDropdownOpen ? "rotate-180" : ""
-            }`}
+            className={`h-4 w-4 text-gray-400 transition-transform duration-200 ${isDropdownOpen ? "rotate-180" : ""}`}
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
