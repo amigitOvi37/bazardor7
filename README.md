@@ -38,7 +38,7 @@ Key capabilities:
 
 ## Screenshots
 
-![Homepage](public/assets/bazar-hero.png)
+![Homepage](./public/ss.png)
 
 *Homepage with hero section and product grid*
 
