@@ -144,36 +144,6 @@ npm run start
 
 ---
 
-## Environment Variables
-
-Create a `.env` file in the root directory with the following variables. The `.env.example` format is provided below — do not commit real credentials.
-
-```env
-# Better-auth configuration
-BETTER_AUTH_SECRET=your-better-auth-secret-here
-BETTER_AUTH_URL=http://localhost:3000
-
-# MongoDB connection (Atlas or local)
-MONGODB_URI=mongodb://username:password@host:27017/database-name
-
-# OAuth Providers
-# Google OAuth
-GOOGLE_CLIENT_ID=your-google-client-id
-GOOGLE_CLIENT_SECRET=your-google-client-secret
-
-# GitHub OAuth
-GITHUB_CLIENT_ID=your-github-client-id
-GITHUB_CLIENT_SECRET=your-github-client-secret
-```
-
-**Important**: 
-- `BETTER_AUTH_SECRET` — a random string used for session signing. Generate with `openssl rand -hex 32`.
-- `BETTER_AUTH_URL` — the public URL where the app is running (e.g., `http://localhost:3000` or `https://your-app.vercel.app`).
-- `MONGODB_URI` — full MongoDB connection string. For MongoDB Atlas, obtain from the connection dialog.
-- OAuth client IDs and secrets must be registered with the respective providers (Google Cloud Console, GitHub Developer Settings).
-
----
-
 ## Database Setup
 
 The application uses **MongoDB** as its database, connected via the `mongodb` Node.js driver and `better-auth/mongo-adapter`.
@@ -312,7 +282,7 @@ This project is **unlicensed**. No license file has been specified. If you wish 
 
 ## Author and Links
 
-- **Repository**: [https://github.com/your-org/bazardor7](https://github.com/your-org/bazardor7) *(replace with actual repo URL)*
+- **Repository**: [https://github.com/amigitOvi37/bazardor7](https://github.com/amigitOvi37/bazardor7) *(replace with actual repo URL)*
 - **Live Demo**: [https://bazardor7.vercel.app](https://bazardor7.vercel.app) *(replace with actual live demo URL)*
 
 ---
