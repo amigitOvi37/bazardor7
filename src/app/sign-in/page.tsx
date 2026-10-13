@@ -26,21 +26,27 @@ const SignInPage = () => {
     }
 
     if (error) {
-      toast.error("Something went error!");
+      toast.error("E-mail or password is incorrect!");
       console.log(error);
     }
   };
 
   const handleGoogleSignIn = async () => {
-    await authClient.signIn.social({
+    const { error } = await authClient.signIn.social({
       provider: "google",
     });
+    if (error) {
+      toast.error("Google Sign In Failed");
+    }
   };
 
   const handleGithubSignIn = async () => {
-    await authClient.signIn.social({
+    const { error } = await authClient.signIn.social({
       provider: "github",
     });
+    if (error) {
+      toast.error("Github Sign In Failed");
+    }
   };
 
   return (

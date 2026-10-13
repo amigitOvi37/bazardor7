@@ -1,5 +1,5 @@
 "use client";
-
+import toast from "react-hot-toast";
 import React from "react";
 import { redirect } from "next/navigation";
 import { authClient } from "../lib/auth-client";
@@ -22,25 +22,33 @@ const SignUpPage = () => {
     });
 
     if (data) {
+      toast.success("Successfully Created Your Account!");
       console.log(data);
       redirect("/");
     }
 
     if (error) {
+      toast.error("User Already Exists!");
       console.log(error);
     }
   };
 
   const handleGoogleSignIn = async () => {
-    await authClient.signIn.social({
+    const { error } = await authClient.signIn.social({
       provider: "google",
     });
+    if (error) {
+      toast.error("Google Sign In Failed");
+    }
   };
 
   const handleGithubSignIn = async () => {
-    await authClient.signIn.social({
+    const { error } = await authClient.signIn.social({
       provider: "github",
     });
+    if (error) {
+      toast.error("Github Sign In Failed");
+    }
   };
 
   return (

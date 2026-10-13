@@ -24,4 +24,10 @@ export const auth = betterAuth({
       clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
     },
   },
+  account: {
+    accountLinking: {
+      enabled: true,
+      trustedProviders: ["github", "google"],
+    },
+  },
 });

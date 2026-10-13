@@ -90,7 +90,7 @@ const ProductDetails = async ({ params }: { params: { id: string } }) => {
               </h1>
               <p className="text-sm text-gray-500">প্রতি {data.unit} · চাল</p>
               <p className="text-sm text-gray-700 pt-1">
-                গতকালের তুলনায় আজ দাম{" "}
+                গতকালের তুলনায় আজ দাম{" "}
                 <span className="text-red-600 font-medium">
                   {data.change.dir === "up" ? "বেড়েছে" : "কমেছে"}
                 </span>{" "}
@@ -112,7 +112,7 @@ const ProductDetails = async ({ params }: { params: { id: string } }) => {
               className={`flex items-center justify-center gap-1 text-xs font-semibold px-2 py-0.5 rounded-full ${
                 data.change.dir === "up"
                   ? "bg-red-50 text-red-600"
-                  : "bg-green-50 text-green-600"
+                  : "bg-green-50 text-green-500"
               } mt-2`}
             >
               <span>{data.change.dir === "up" ? "▲" : "▼"}</span>
@@ -156,7 +156,7 @@ const ProductDetails = async ({ params }: { params: { id: string } }) => {
                 {avgPrice} <span className="text-sm font-normal">টাকা</span>
               </div>
               <p className="text-[11px] text-gray-400 mt-1">
-                প্রতি {data.unit}-এর হিসাবে
+                প্রতি {data.unit}-এর作为
               </p>
             </div>
           </div>
@@ -173,9 +173,9 @@ const ProductDetails = async ({ params }: { params: { id: string } }) => {
               <tr className="border-b border-gray-100 text-xs text-gray-500">
                 <th className="py-3 font-medium">বাজার</th>
                 <th className="py-3 font-medium">বিভাগ</th>
-                <th className="py-3 font-medium">সর্বনিম্ন</th>
-                <th className="py-3 font-medium">সর্বাধিক</th>
-                <th className="py-3 font-medium text-right">গড়</th>
+                <th className="py-3 font-medium">স Norminal</th>
+                <th className="py-3 font-medium">স Norminal</th>
+                <th className="py-3 font-medium text-right">গ Norminal</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100 text-sm">
