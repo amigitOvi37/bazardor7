@@ -39,6 +39,7 @@ Key capabilities:
 ## Screenshots
 
 ![Homepage](./public/ss.png)
+![Grid](./public/ss2.png)
 
 *Homepage with hero section and product grid*
 
